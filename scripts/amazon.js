@@ -92,6 +92,8 @@ function addMessage(productId) {
   addedMessageTimeoutId=timeoutId;
 }
 
+updateCartQuantity();
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button)=>{
     button.addEventListener('click',()=>{
@@ -106,6 +108,8 @@ document.querySelectorAll('.js-add-to-cart')
       
     });
   });
+
+  
 
 
 
