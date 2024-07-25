@@ -42,6 +42,28 @@
   }
 }
 
+.quantity-input{
+  width: 30px;
+  display: none;
+  
+}
+.save-quantity-link{
+  display: none;
+}
+
+.is-editing-quantity .quantity-input
+{
+  display: initial;
+}
+
+.is-editing-quantity .save-quantity-link{
+  display: initial;
+}
+
+.hide-quantity .quantity-label{
+  display: none;
+}
+
 .cart-item-container,
 .payment-summary {
   border: 1px solid rgb(222, 222, 222);
