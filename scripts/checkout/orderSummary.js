@@ -141,6 +141,7 @@ export function renderOrderSummary(){
         updateCartQuantity();
         renderPaymentSummary();
       })
+      
     })
 
     //update total quantity in check out header link
@@ -187,15 +188,21 @@ export function renderOrderSummary(){
 
         const newQuantity=Number(inputValue.value);
 
+
         updateQuantity(productId, newQuantity);
 
         const quantityLabel=document.querySelector(`.js-quantity-label-${productId}`);
 
         quantityLabel.innerHTML=newQuantity;
 
-        updateCartQuantity();
+        if (newQuantity===0) {
+          removeFromCart(productId);
+          cartItemContainer.remove();
+          
+        }
 
-        renderPaymentSummary(); 
+        renderPaymentSummary();
+        updateCartQuantity(); 
 
       })
       
