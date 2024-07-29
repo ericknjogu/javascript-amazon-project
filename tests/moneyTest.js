@@ -1,5 +1,6 @@
 import { formatCurrency } from "../scripts/utils/money.js";
 
+console.log('Test Suite: FormatCurrency');
 console.log('converts into decimal');
 if (formatCurrency(2095)==='20.95') {
   console.log('passed')
@@ -14,6 +15,7 @@ if (formatCurrency(0)==='0.00') {
   console.log('failed');
 }
 
+console.log('rounds off correctly');
 if (formatCurrency(2000.5)==='20.01') {
   console.log('passed')
 } else{
