@@ -3,6 +3,7 @@ import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
+import { updateCartQuantity } from "./checkout/updateCartQuantity.js";
 //import '../data/cart-class.js'
 //import '../data/backend-practice.js'
 
@@ -17,11 +18,13 @@ new Promise((resolve)=>{
     });
   })
 }).then(()=>{
-  renderOrderSummary();
 
+
+  updateCartQuantity();
+  renderCheckoutHeader();
+  renderOrderSummary();
   renderPaymentSummary();
 
-  renderCheckoutHeader();
 });
 
 

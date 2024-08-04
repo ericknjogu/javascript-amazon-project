@@ -4,6 +4,7 @@ import { formatCurrency } from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
+import { updateCartQuantity } from './updateCartQuantity.js';
 
 
 export function renderOrderSummary(){
@@ -126,7 +127,7 @@ export function renderOrderSummary(){
   document.querySelector('.js-order-summary')
     .innerHTML = cartSummaryHTML;
 
-    //delete item from page
+  //delete item from page
   document.querySelectorAll('.js-delete-link')
     .forEach((link) => {
       link.addEventListener('click',()=>{
@@ -145,16 +146,10 @@ export function renderOrderSummary(){
       
     })
 
-    //update total quantity in check out header link
-  function updateCartQuantity() {
+  //update total quantity in check out header link
+  updateCartQuantity();
 
-    const cartQuantity=calculateCartQuantity();
-
-    document.querySelector('.js-cart-quantity-link')
-      .innerHTML=`${cartQuantity} items`;
-    }
-
-    //hide quantity and add input after clicking update
+  //hide quantity and add input after clicking update
 
   document.querySelectorAll('.js-update-link')
     .forEach((update)=>{
@@ -209,14 +204,13 @@ export function renderOrderSummary(){
       
     })
   
+    
   document.querySelectorAll('.js-delivery-option')
     .forEach((element)=>{
       element.addEventListener('click',()=>{
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
-
         renderOrderSummary();
-
         renderPaymentSummary();
         updateCartQuantity();
       })

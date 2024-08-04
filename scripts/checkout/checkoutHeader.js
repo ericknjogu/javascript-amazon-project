@@ -6,5 +6,6 @@ export function renderCheckoutHeader() {
     const totalCartItem=calculateCartQuantity();
 
     return totalCartItem;
+    
 
 };
