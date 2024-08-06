@@ -7,16 +7,40 @@ import { updateCartQuantity } from "./checkout/updateCartQuantity.js";
 //import '../data/cart-class.js'
 //import '../data/backend-practice.js'
 
-new Promise((resolve)=>{ 
-  loadProducts(()=>{ 
-    resolve();
-  });
-}).then(()=>{
-  return new Promise((resolve)=>{
+Promise.all([
+  new Promise((resolve)=>{ 
+    loadProducts(()=>{ 
+      resolve('value 1');
+    });
+  }),
+  new Promise((resolve)=>{
     loadCart(()=>{
       resolve();
     });
   })
+]).then((values)=>{
+  console.log(values);
+  updateCartQuantity();
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+})
+
+/*
+new Promise((resolve)=>{ 
+  loadProducts(()=>{ 
+    resolve('value 1');
+  });
+
+}).then((value)=>{
+console.log(value);
+
+  return new Promise((resolve)=>{
+    loadCart(()=>{
+      resolve();
+    });
+  });
+
 }).then(()=>{
 
 
@@ -26,6 +50,7 @@ new Promise((resolve)=>{
   renderPaymentSummary();
 
 });
+*/
 
 
 /*
