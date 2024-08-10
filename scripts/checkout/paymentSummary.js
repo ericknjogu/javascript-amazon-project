@@ -71,6 +71,7 @@ export function renderPaymentSummary() {
     .innerHTML= paymentSummaryHTML;
 
   const orderButton=document.querySelector('.js-place-order')
+  
 
   orderButton.addEventListener('click',async ()=>{
     try {
